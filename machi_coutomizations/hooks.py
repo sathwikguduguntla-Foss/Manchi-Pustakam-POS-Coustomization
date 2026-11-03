@@ -5,6 +5,11 @@ app_description = "Customizations for Machi"
 app_email = "sathwik.guduguntla@fosserp.com"
 app_license = "mit"
 
+# required_apps = ["erpnext"]
+
+page_js = {
+    "point-of-sale": "public/js/pos_discount.js"
+}
 # Apps
 # ------------------
 
@@ -272,3 +277,10 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+
+# Permit zero stock valuation only on POS invoice transaction rows.
+doc_events = {
+    "POS Invoice": {
+        "before_validate": "machi_coutomizations.pos_discount.prepare_pos_items",
+    }
+}
